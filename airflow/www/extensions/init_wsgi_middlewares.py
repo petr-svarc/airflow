@@ -59,3 +59,6 @@ def init_wsgi_middleware(flask_app: Flask) -> None:
             x_port=conf.getint("webserver", "PROXY_FIX_X_PORT", fallback=1),
             x_prefix=conf.getint("webserver", "PROXY_FIX_X_PREFIX", fallback=1),
         )
+
+    # Add SESSION_COOKIE_PATH variable with proper value to Flask App
+    flask_app.config["SESSION_COOKIE_PATH"] = base_url + "/"
